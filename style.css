@@ -1,0 +1,329 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap");
+:root {
+  --azul: hsl(207, 52%, 49%);
+  --rojo: hsl(0, 93%, 60%);
+  --blanco: hsl(0, 0%, 100%);
+  --grisClaro: hsl(0, 0%, 81%);
+  --negroClaro: hsl(0, 0%, 12%);
+  --negro: hsl(0, 0%, 0%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;     
+  font-size: 16px;
+}
+
+p{
+    line-height: 1.5;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+    padding-top: 3rem;
+    background-color: var(--negroClaro);
+}
+
+a{
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+button{
+    cursor: pointer;
+}
+
+button:hover{
+    filter: saturate(10%);
+}
+
+.botonEnviar{
+    background-color: var(--azul);    
+    border: none;
+    padding: .75rem 1.5rem;
+    border-radius: 4px;
+}
+
+
+.contenedor{
+    border-radius: 8px;
+    padding: 1.5rem;
+    background-color: var(--negro);
+}
+
+.paqueteDeComentarios {
+    display: flex;
+    flex-direction: column;
+}
+
+.seccionComentarios{
+    max-width: 75ch;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+.comentario{
+    margin-bottom: 1rem;
+    display: grid;
+    grid-template-areas: 
+        "score user controls"
+        "score comentario comentario"
+        "score comentario comentario"
+    ;
+    grid-template-columns: auto 1fr auto;
+    gap: 1.5rem;
+    row-gap: 1rem;
+    color: var(--blanco);
+}
+
+.like{
+    color: var(--azul);
+    font-weight: 500;
+    grid-area: score;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: .75rem;
+    padding-top: .5rem;
+    width: 1rem;
+    box-sizing:initial;
+    background-color: var(--negroClaro);
+    border-radius: 8px;
+    align-self: flex-start;
+}
+
+.controlLike{
+    width: 100%;
+    cursor: pointer;
+    object-fit: scale-down;
+}
+
+.c-text{
+    grid-area: comentario;
+    width: 100%;
+    
+}
+
+.usuario{
+    width: 100%;
+    grid-area: user;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.nombreUsuario{
+    -color: var(--azul);
+    font-weight: 700;
+    margin-right: 15px;
+}
+
+.imagenUsuario{
+    height: 2rem;
+    width: 2rem;
+    margin-right: 15px;
+}
+
+.c-controls{
+    display: flex;
+    gap: 1rem;
+    color: var(--azul);
+    grid-area: controls;
+    align-self: center;
+    justify-self: flex-end;
+}
+
+.c-controls a{
+    align-items: center;
+}
+
+.editar , .responder{
+    color: var(--azul);
+}
+
+.editar{
+    display: none;
+}
+
+
+.eliminar{
+    color: var(--rojo);
+    display: none;
+    margin-right: 20px;
+}
+
+.control-icon{
+    margin-right: .5rem;
+}
+/* -------------------------------------------------------------aqui----------------------------------- */
+.replies{
+    display: flex;
+    margin-left: 2.5rem;
+    padding-left: 2.4rem;
+    
+}
+
+.responder-to{
+    color: var(--azul);
+    font-weight: 500;
+}
+
+.inputContesta{
+    display: grid;
+    margin-bottom: 1rem;
+    grid-template-areas: "avatar input button";
+    grid-template-columns: min-content auto min-content;
+    justify-items: center;
+    gap: 1rem;
+    min-height: 9rem;
+}
+
+.inputContesta img{
+    grid-area: avatar;
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.inputContesta button{
+    grid-area: button;
+    align-self: flex-start;
+}
+
+.inputContesta textarea{
+    grid-area: input;
+    padding: 1rem;
+    width: 100%;
+    border: 1px solid var(--blanco);
+    border-radius: 4px;
+    resize: none;
+}
+
+.this-user .nombreUsuario::after{
+    font-weight: 400;
+    content: "you";
+    color: var(--negro);
+    background-color: var(--azul);
+    padding: 0 .4rem;
+    padding-bottom: .2rem;
+    font-size: .8rem;
+    margin-left: .5rem;
+    border-radius: 2px;
+}
+
+.this-user .responder{
+    display: none;
+}
+
+.this-user .editar , .this-user .eliminar{
+    display: flex;
+}
+
+@media screen and (max-width:640px) {
+    .contenedor{
+        padding: .75rem;
+    }
+    .replies{
+        padding-left: 1rem;
+        margin-left: .5rem;
+    }
+    .comentario{
+        grid-template-areas: 
+            "user user user"
+            "comentario comentario comentario"
+            "score ... controls"
+        ;
+
+        gap: .5rem;
+    }
+    .like{
+        flex-direction: row;
+        width: auto;
+        
+    }
+
+    .scoreLike{
+       width: 20px;
+       margin-left: 20px;
+    }
+
+    .inputContesta{
+        grid-template-areas: 
+            "input input input"
+            "avatar ... button"
+        ;
+        grid-template-rows: auto min-content;
+        align-items: center;
+        gap: .5rem;
+    }
+    .inputContesta img{
+        height: 2rem;
+        width: 2rem;
+    }
+    .inputContesta textarea{
+        height: 6rem;
+        padding: .5rem;
+        align-self: stretch;
+    }
+}
+
+
+.paqueteModal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(231, 218, 218, 0.466);
+}
+
+.modal{
+    padding: 1.5rem;
+    max-width: 32ch;
+    display: grid;
+    gap: 1rem;
+    grid-template-areas: 
+    "heading heading"
+    "body body"
+    "no yes";
+}
+
+.invisible{
+    display: none;
+}
+
+.modal h3{
+    grid-area: heading;
+    color: var(--blanco);
+    font-size: 25px;
+}
+
+.modal button{
+    color: var(--negro);
+    padding: .75rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: 500;
+}
+
+.modal p{
+    grid-area: body;
+    color: var(--blanco);
+    line-height: 1.5;
+}
+
+.modal .si{
+    grid-area: yes;
+    background-color: var(--rojo);
+}
+
+.modal .no{
+    background-color: var(--blanco);
+    grid-area: no;
+}
