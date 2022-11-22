@@ -5,6 +5,5 @@ seccion de comentarios para cualquier tipo de pagina
 ## Lenguajes de programacion
 
 HTML  
-CSS  
-SASS   
+CSS      
 JAVASCRIPT
