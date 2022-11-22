@@ -2,7 +2,7 @@
 
 seccion de comentarios para cualquier tipo de pagina
 
-## Lenguajes de programacion
+## Lenguajes usados
 
 HTML  
 CSS      
