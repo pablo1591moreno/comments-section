@@ -1,9 +1,11 @@
 # Comments-section
 
-seccion de comentarios para cualquier tipo de pagina
+Seccion de comentarios para cualquier tipo de pagina
 
-## Lenguajes usados
+## Recursos utilizados
 
-HTML  
-CSS      
-JAVASCRIPT
+- HTML  
+- CSS      
+- JAVASCRIPT
+
+
