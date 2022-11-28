@@ -12,7 +12,7 @@ const data = {
       id: 1,
       content:
         "ESTE ES EL PRIMER COMENTARIO DE EJEMPLO",
-      createdAt: "1 month ago",
+      createdAt: "12 días",
       score: 0,
       user: {
         imagen: {
@@ -28,7 +28,7 @@ const data = {
       id: 2,
       content:
         "ESTE ES EL SEGUNDO COMENTARIO DE EJEMPLO",
-      createdAt: "1 month ago",
+      createdAt: "10 días",
       score: 0,
       user: {
         imagen: {
@@ -106,9 +106,19 @@ const respondiendoComentario = (padre, idPadre, respuestaPara = undefined) => {
     if (texto.length == 0) return;
 
     sumaComentario(texto, idPadre, respuestaPara);
-
   });
 
+  addedInput.querySelector(".cmnt-input").addEventListener("keypress", (e) => {
+    
+    let texto = addedInput.querySelector(".cmnt-input").value;
+    if (texto.length == 0) return;
+
+    if (e.code === "Enter"){      
+      sumaComentario(texto, idPadre, respuestaPara);
+    }
+  });
+
+  
 };
 
 
@@ -142,9 +152,8 @@ const creaComentarioEnNodo = (comentarioObject) => {
 
     creandoComentarioEnNodo.querySelector(".editar").addEventListener("click", (e) => {
       const caminoAlClass = e.composedPath()[2].querySelector(".c-body");
-
-      if (caminoAlClass.getAttribute("contenteditable") == false || 
-      caminoAlClass.getAttribute("contenteditable") == null) {
+      
+      if (caminoAlClass.getAttribute("contenteditable") == false || caminoAlClass.getAttribute("contenteditable") == null) {
 
         caminoAlClass.setAttribute("contenteditable", true);
         caminoAlClass.focus()
@@ -153,6 +162,15 @@ const creaComentarioEnNodo = (comentarioObject) => {
         caminoAlClass.removeAttribute("contenteditable");
         comentarioObject.content = caminoAlClass.childNodes[0].data
       }      
+
+      caminoAlClass.addEventListener("keypress" , (e) => {
+        if (e.code === 'Enter') {
+          caminoAlClass.removeAttribute("contenteditable");
+        comentarioObject.content = caminoAlClass.childNodes[0].data
+      }
+      
+      })
+
 
     });
     return creandoComentarioEnNodo;
@@ -230,8 +248,22 @@ textoInputPrincipal.querySelector(".botonEnviar").addEventListener("click", () =
   console.log("---------------------------------------------------------     FIN   ")
 });
 
+textoInputPrincipal.querySelector("textarea").addEventListener("keypress", (e) => {
+
+  let texto = textoInputPrincipal.querySelector(".cmnt-input").value;
+
+  if (texto.length == 0) return;
+
+  if (e.code === 'Enter') {    
+    console.log(texto, 0);
+    sumaComentario(texto, 0);
+    textoInputPrincipal.querySelector(".cmnt-input").value = "";
+  }
 
 
+})
+
+  
 //-----------------------------------------------------------------------------ELIMINAR Y CONFIRMAR 
 
 const eliminarComentario = (comentarioObject) => {
