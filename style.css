@@ -1,12 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap");
 :root {
-  --azul: hsl(207, 52%, 49%);
-  --rojo: hsl(0, 93%, 60%);
-  --blanco: hsl(0, 0%, 100%);
-  --grisClaro: hsl(0, 0%, 81%);
-  --negroClaro: hsl(0, 0%, 12%);
-  --negro: hsl(0, 0%, 0%);
+  --azul: #4949cf;
+  --rojo: #ce3e3e; 
+  --blanco: #000000; /*negro*/
+  --grisClaro: #363636; /* negroClaro */
+  --negroClaro: #b9b9b9; /* blancoClaro */
+  --negro: #ffffff; /*blanco*/
 }
+
+/* :root {
+    --azul: #4949cf;
+    --rojo: #ce3e3e; 
+    --blanco: hsl(0, 0%, 100%);
+    --grisClaro: hsl(0, 0%, 81%);
+    --negroClaro: hsl(0, 0%, 12%);
+    --negro: hsl(0, 0%, 0%);
+  } */
 
 * {
   padding: 0;
@@ -33,15 +42,55 @@ a{
     font-weight: 500;
 }
 
+.onOff{
+    margin: 0 50px;
+    display: flex;    
+    background-color: #000000;  
+    border-radius: 1000px;
+    border: none;
+    position: relative;
+    outline: none;        
+}
+
+
+.onOff::after{
+    content: "";
+    display: block;
+    width: 40px;
+    height: 40px;
+    position:absolute;
+    background-color: white;
+    top: 0;
+    left: 0;
+    right: unset;
+    border-radius: 100px;
+    transition: .3s ease all;
+    box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.13);
+}
+
+.onOff.activo{
+    background-color: hsl(81, 95%, 59%);  
+}
+
+.onOff.activo::after{
+    left: unset;
+    right: 0;
+}
+
+.onOff span{
+width: 40px;
+height: 40px;
+line-height: 40px;
+display: block;
+color: #ffffff;
+}
+
 button{
     cursor: pointer;
 }
 
-button:hover{
-    filter: saturate(10%);
-}
-
 .botonEnviar{
+    color: var(--negro);    
     background-color: var(--azul);    
     border: none;
     padding: .75rem 1.5rem;
@@ -81,7 +130,7 @@ button:hover{
 }
 
 .like{
-    color: var(--azul);
+    color: var(--negro);
     font-weight: 500;
     grid-area: score;
     display: flex;
@@ -91,7 +140,7 @@ button:hover{
     padding-top: .5rem;
     width: 1rem;
     box-sizing:initial;
-    background-color: var(--negroClaro);
+    background-color: var(--azul);
     border-radius: 8px;
     align-self: flex-start;
 }
@@ -204,17 +253,6 @@ button:hover{
     resize: none;
 }
 
-.this-user .nombreUsuario::after{
-    font-weight: 400;
-    content: "you";
-    color: var(--negro);
-    background-color: var(--azul);
-    padding: 0 .4rem;
-    padding-bottom: .2rem;
-    font-size: .8rem;
-    margin-left: .5rem;
-    border-radius: 2px;
-}
 
 .this-user .responder{
     display: none;
@@ -224,7 +262,12 @@ button:hover{
     display: flex;
 }
 
+/*------------------------------------------------------------------------ Phone */
+
 @media screen and (max-width:640px) {
+    p {
+        line-height: 0;
+    }
 
     .seccionComentarios{
     width: 95%;
@@ -232,29 +275,36 @@ button:hover{
 
     .contenedor{
         padding: 1rem;
+        
     }
     .replies{
         padding-left: 1rem;
         margin-left: .5rem;
     }
+
+    .responder{
+        font-size: .9rem;
+    }
+
     .comentario{
         grid-template-areas: 
             "user user user"
             "comentario comentario comentario"
             "score ... controls"
         ;
-
-        gap: .5rem;
+        gap: 1rem;
     }
+
     .like{
         flex-direction: row;
-        width: auto;
-        
+        width: 2.4rem;
+        padding: .5rem;        
+        gap: .5rem;
     }
 
     .controlLike{
        width: 18px;
-       margin-left: 20px;
+       
     }
 
     .inputContesta{
@@ -264,8 +314,14 @@ button:hover{
         ;
         grid-template-rows: auto min-content;
         align-items: center;
-        gap: .5rem;
+        gap: 1rem;                
     }
+
+    /* .replies{        
+        align-items: flex-end;        
+    } */
+
+
     .inputContesta img{
         height: 2rem;
         width: 2rem;
@@ -294,6 +350,8 @@ button:hover{
     }
     
 }
+
+/*------------------------------------------------------------------------*/
 
 
 .paqueteModal{
@@ -349,7 +407,7 @@ button:hover{
 }
 
 .modal .no{
-    background-color: var(--blanco);
+    background-color: var(--azul);
     grid-area: no;
 }
 

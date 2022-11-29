@@ -84,7 +84,7 @@ const sumaComentario = (body, idPadre, respuestaPara = undefined) => {
 };
 
 
-const respondiendoComentario = (padre, idPadre, respuestaPara = undefined) => {
+const respondiendoComentario = (padre, idPadre, respuestaPara = undefined ,data) => {
   console.log("3----------------------respondiendoComentario-----------------------")
 
 
@@ -92,33 +92,33 @@ const respondiendoComentario = (padre, idPadre, respuestaPara = undefined) => {
     padre.querySelectorAll(".inputContesta").forEach((e) => {
       e.remove();
     });
-  }
+  }  
 
   const inputTemplate = document.querySelector(".inputContesta-template");
   const inputNodo = inputTemplate.content.cloneNode(true);
-
-
+  
   const addedInput = sumaFragmento(inputNodo, padre);
-
+  
 
   addedInput.querySelector(".botonEnviar").addEventListener("click", () => {
-    let texto = addedInput.querySelector(".cmnt-input").value;
-    if (texto.length == 0) return;
+    const texto = addedInput.querySelector(".cmnt-input").value;
+
+    if (texto.trim() === "") return;
 
     sumaComentario(texto, idPadre, respuestaPara);
   });
 
   addedInput.querySelector(".cmnt-input").addEventListener("keypress", (e) => {
     
-    let texto = addedInput.querySelector(".cmnt-input").value;
-    if (texto.length == 0) return;
+    const texto = addedInput.querySelector(".cmnt-input").value;
 
-    if (e.code === "Enter"){      
+    if (e.code === "Enter" && texto.trim() !== "") {
       sumaComentario(texto, idPadre, respuestaPara);
     }
-  });
+    
 
-  
+  });  
+
 };
 
 
@@ -163,14 +163,15 @@ const creaComentarioEnNodo = (comentarioObject) => {
         comentarioObject.content = caminoAlClass.childNodes[0].data
       }      
 
-      caminoAlClass.addEventListener("keypress" , (e) => {
-        if (e.code === 'Enter') {
+    caminoAlClass.addEventListener("keypress" , (e) => {
+        const largo = caminoAlClass.childNodes[0].length
+        
+        if (e.code === 'Enter' && largo > 0) {
           caminoAlClass.removeAttribute("contenteditable");
         comentarioObject.content = caminoAlClass.childNodes[0].data
-      }
-      
-      })
+      }  
 
+      })
 
     });
     return creandoComentarioEnNodo;
@@ -202,6 +203,7 @@ const agregaComentario = (nodoPadre, comentarioEnNodo, idPadre) => {
       );
 
     }
+ 
   });
 
 };
@@ -239,29 +241,30 @@ textoInputPrincipal.querySelector(".botonEnviar").addEventListener("click", () =
 
   console.log("7----------------------textoInputPrincipal-----------------------")
 
-  let texto = textoInputPrincipal.querySelector(".cmnt-input").value;
-  if (texto.length == 0) return;
-  console.log(texto, 0);
+  const texto = textoInputPrincipal.querySelector(".cmnt-input").value;
+  
+  console.log(texto.trim() === "")
+
+  if (texto.trim() === "") return
+  
   sumaComentario(texto, 0);
   textoInputPrincipal.querySelector(".cmnt-input").value = "";
 
   console.log("---------------------------------------------------------     FIN   ")
 });
 
-textoInputPrincipal.querySelector("textarea").addEventListener("keypress", (e) => {
+textoInputPrincipal.querySelector(".cmnt-input").addEventListener("keypress", (e) => {
 
-  let texto = textoInputPrincipal.querySelector(".cmnt-input").value;
+  const texto = textoInputPrincipal.querySelector(".cmnt-input").value;  
 
-  if (texto.length == 0) return;
-
-  if (e.code === 'Enter') {    
-    console.log(texto, 0);
-    sumaComentario(texto, 0);
-    textoInputPrincipal.querySelector(".cmnt-input").value = "";
+  if(e.code === "Enter" && texto.trim() !== "") {    
+      
+  sumaComentario(texto, 0);
+  textoInputPrincipal.querySelector(".cmnt-input").value = "";
   }
 
-
 })
+
 
   
 //-----------------------------------------------------------------------------ELIMINAR Y CONFIRMAR 
@@ -293,5 +296,13 @@ const confirmarEliminacion = (comentarioObject) => {
 };
 
 
+const botonOnOff = document.querySelector("#onOff");
 
+botonOnOff.addEventListener("click", () =>{
+
+  document.body.classList.toggle('oscuro')
+botonOnOff.classList.toggle('activo')
+
+
+})
 

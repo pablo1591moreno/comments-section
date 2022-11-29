@@ -5,15 +5,21 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/2449c46202.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css" />
   <title>Interactive comments section</title>
 </head>
 
 <body>
 
+  <button class="onOff" id="onOff">
+  <span><i class="fa-solid fa-sun"></i></span>
+  <span><i class="fa-solid fa-moon"></i></span>
+</button>
+
   <template class="inputContesta-template">
     <div class="inputContesta contenedor">
-      <img src="images/avatars/image-juliusomo.webp" alt="" class="imagenUsuario">
+      <img src="images/avatars/image-juliusomo.webp"  class="imagenUsuario">
       <textarea class="cmnt-input"></textarea>
       <button class="botonEnviar">Enviar</button>
     </div>
@@ -34,19 +40,19 @@
           <a class="responder"><img src="images/icon-reply.svg" alt="" class="control-icon">responder</a>
         </div>
         <div class="usuario">
-          <img src="images/avatars/image-maxblagun.webp" alt="" class="imagenUsuario">
-          <p class="nombreUsuario">maxblagun</p>
-          <p class="fecha">2 weeks ago</p>
+          <img src="" class="imagenUsuario">
+          <p class="nombreUsuario"></p>
+          <p class="fecha"></p>
         </div>
         <p class="c-text">
           <span class="responder-to"></span>
           <span class="c-body"></span>
         </p>
       </div>
-      <!--comment-->
+      <!--comentarios-->
       <div class="replies paqueteDeComentarios">
       </div>
-      <!--replies-->
+      <!--respuesta-->
     </div>
   </template>
 
@@ -61,7 +67,7 @@
       <div class="inputContesta contenedor">
         <img src="images/avatars/image-juliusomo.webp" alt="" class="imagenUsuario">
         <textarea class="cmnt-input"></textarea>
-        <button class="botonEnviar">Enviar</button>
+        <button class="botonEnviar">Enviarrr</button>
       </div>
       <!--responder input-->
     </div>
