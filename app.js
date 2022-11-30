@@ -11,7 +11,7 @@ const data = {
       parent: 0,
       id: 1,
       content:
-        "ESTE ES EL PRIMER COMENTARIO DE EJEMPLO",
+        "este es el primer comentario de ejemplo",
       createdAt: "12 días",
       score: 0,
       user: {
@@ -27,7 +27,7 @@ const data = {
       parent: 0,
       id: 2,
       content:
-        "ESTE ES EL SEGUNDO COMENTARIO DE EJEMPLO",
+        "este es el segundo comentario de ejemplo",
       createdAt: "10 días",
       score: 0,
       user: {
