@@ -1,29 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/2449c46202.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css" />
   <title>Interactive comments section</title>
 </head>
 
 <body>
 
-  <button class="onOff" id="onOff">
-  <span><i class="fa-solid fa-sun"></i></span>
-  <span><i class="fa-solid fa-moon"></i></span>
-</button>
 
   <template class="inputContesta-template">
     <div class="inputContesta contenedor">
-      <img src="images/avatars/image-juliusomo.webp"  class="imagenUsuario">
+      <img src="images/avatars/image-juliusomo.webp" class="imagenUsuario">
       <textarea class="cmnt-input"></textarea>
       <button class="botonEnviar">Enviar</button>
     </div>
-    
+
   </template>
 
   <template class="comentarioTemplate">
@@ -58,18 +54,27 @@
 
   <main>
 
-    <div class="seccionComentarios">
-      <div class="paqueteDeComentarios">
 
+    <div class="seccionComentarios">
+
+      <div class="seccionBoton">
+        <button class="onOff" id="onOff">
+          <span><i class="fa-solid fa-sun"></i></span>
+          <span><i class="fa-solid fa-moon"></i></span>
+        </button>
+      </div>
+
+      <div class="paqueteDeComentarios">
       </div>
 
       <!--comment wrapper-->
       <div class="inputContesta contenedor">
         <img src="images/avatars/image-juliusomo.webp" alt="" class="imagenUsuario">
         <textarea class="cmnt-input"></textarea>
-        <button class="botonEnviar">Enviarrr</button>
+        <button class="botonEnviar">Enviar</button>
       </div>
-      <!--responder input-->
+    
+      <!--responder input-->    
     </div>
 
     <!--Modal-->

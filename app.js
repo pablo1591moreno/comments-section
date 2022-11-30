@@ -48,7 +48,7 @@ const sumaFragmento = (frag, padre) => {
 
   const fragHijo = [].slice.call(frag.childNodes);
   padre.appendChild(frag);
- 
+
 
   return fragHijo[1];
 }
@@ -84,7 +84,7 @@ const sumaComentario = (body, idPadre, respuestaPara = undefined) => {
 };
 
 
-const respondiendoComentario = (padre, idPadre, respuestaPara = undefined ,data) => {
+const respondiendoComentario = (padre, idPadre, respuestaPara = undefined, data) => {
   console.log("3----------------------respondiendoComentario-----------------------")
 
 
@@ -92,13 +92,13 @@ const respondiendoComentario = (padre, idPadre, respuestaPara = undefined ,data)
     padre.querySelectorAll(".inputContesta").forEach((e) => {
       e.remove();
     });
-  }  
+  }
 
   const inputTemplate = document.querySelector(".inputContesta-template");
   const inputNodo = inputTemplate.content.cloneNode(true);
-  
+
   const addedInput = sumaFragmento(inputNodo, padre);
-  
+
 
   addedInput.querySelector(".botonEnviar").addEventListener("click", () => {
     const texto = addedInput.querySelector(".cmnt-input").value;
@@ -109,15 +109,15 @@ const respondiendoComentario = (padre, idPadre, respuestaPara = undefined ,data)
   });
 
   addedInput.querySelector(".cmnt-input").addEventListener("keypress", (e) => {
-    
+
     const texto = addedInput.querySelector(".cmnt-input").value;
 
     if (e.code === "Enter" && texto.trim() !== "") {
       sumaComentario(texto, idPadre, respuestaPara);
     }
-    
 
-  });  
+
+  });
 
 };
 
@@ -133,16 +133,16 @@ const creaComentarioEnNodo = (comentarioObject) => {
   creandoComentarioEnNodo.querySelector(".imagenUsuario").src = comentarioObject.user.imagen.webp;
   creandoComentarioEnNodo.querySelector(".numeroLikes").textContent = comentarioObject.score;
   creandoComentarioEnNodo.querySelector(".fecha").textContent = comentarioObject.createdAt;
-  creandoComentarioEnNodo.querySelector(".c-body").textContent = comentarioObject.content; 
+  creandoComentarioEnNodo.querySelector(".c-body").textContent = comentarioObject.content;
 
   if (comentarioObject.replyingTo)
     creandoComentarioEnNodo.querySelector(".responder-to").textContent =
       "@" + comentarioObject.replyingTo;
-  
+
   creandoComentarioEnNodo.querySelector(".plusLike").addEventListener("click", () => {
     comentarioObject.score++;
     comentariosDeInicio();
-  });    
+  });
 
   if (comentarioObject.user.username == data.currentUser.username) {
     creandoComentarioEnNodo.querySelector(".comentario").classList.add("this-user");
@@ -152,7 +152,7 @@ const creaComentarioEnNodo = (comentarioObject) => {
 
     creandoComentarioEnNodo.querySelector(".editar").addEventListener("click", (e) => {
       const caminoAlClass = e.composedPath()[2].querySelector(".c-body");
-      
+
       if (caminoAlClass.getAttribute("contenteditable") == false || caminoAlClass.getAttribute("contenteditable") == null) {
 
         caminoAlClass.setAttribute("contenteditable", true);
@@ -161,28 +161,28 @@ const creaComentarioEnNodo = (comentarioObject) => {
       } else {
         caminoAlClass.removeAttribute("contenteditable");
         comentarioObject.content = caminoAlClass.childNodes[0].data
-      }      
+      }
 
-    caminoAlClass.addEventListener("keypress" , (e) => {
+      caminoAlClass.addEventListener("keypress", (e) => {
         const largo = caminoAlClass.childNodes[0].length
-        
+
         if (e.code === 'Enter' && largo > 0) {
           caminoAlClass.removeAttribute("contenteditable");
-        comentarioObject.content = caminoAlClass.childNodes[0].data
-      }  
+          comentarioObject.content = caminoAlClass.childNodes[0].data
+        }
 
       })
 
     });
     return creandoComentarioEnNodo;
-  }  
+  }
   return creandoComentarioEnNodo;
 };
 
 
 const agregaComentario = (nodoPadre, comentarioEnNodo, idPadre) => {
   console.log("5----------------------agregaComentario-----------------------")
-  
+
   const botonReply = comentarioEnNodo.querySelector(".responder");
 
   const agregandoComentario = sumaFragmento(comentarioEnNodo, nodoPadre);
@@ -203,7 +203,7 @@ const agregaComentario = (nodoPadre, comentarioEnNodo, idPadre) => {
       );
 
     }
- 
+
   });
 
 };
@@ -217,7 +217,7 @@ const comentariosDeInicio = (
 
 ) => {
   console.log("6----------------------comentariosDeInicio-----------------------")
- 
+
   padre.innerHTML = "";
   listaDeComentarios.forEach((element) => {
 
@@ -229,7 +229,7 @@ const comentariosDeInicio = (
     agregaComentario(padre, comentarioEnNodo, idPadre);
 
     console.log("6.2----------------------comentariosDeInicio-----------------------")
-   
+
   });
 
 }
@@ -242,11 +242,11 @@ textoInputPrincipal.querySelector(".botonEnviar").addEventListener("click", () =
   console.log("7----------------------textoInputPrincipal-----------------------")
 
   const texto = textoInputPrincipal.querySelector(".cmnt-input").value;
-  
+
   console.log(texto.trim() === "")
 
   if (texto.trim() === "") return
-  
+
   sumaComentario(texto, 0);
   textoInputPrincipal.querySelector(".cmnt-input").value = "";
 
@@ -255,18 +255,18 @@ textoInputPrincipal.querySelector(".botonEnviar").addEventListener("click", () =
 
 textoInputPrincipal.querySelector(".cmnt-input").addEventListener("keypress", (e) => {
 
-  const texto = textoInputPrincipal.querySelector(".cmnt-input").value;  
+  const texto = textoInputPrincipal.querySelector(".cmnt-input").value;
 
-  if(e.code === "Enter" && texto.trim() !== "") {    
-      
-  sumaComentario(texto, 0);
-  textoInputPrincipal.querySelector(".cmnt-input").value = "";
+  if (e.code === "Enter" && texto.trim() !== "") {
+
+    sumaComentario(texto, 0);
+    textoInputPrincipal.querySelector(".cmnt-input").value = "";
   }
 
 })
 
 
-  
+
 //-----------------------------------------------------------------------------ELIMINAR Y CONFIRMAR 
 
 const eliminarComentario = (comentarioObject) => {
@@ -298,10 +298,10 @@ const confirmarEliminacion = (comentarioObject) => {
 
 const botonOnOff = document.querySelector("#onOff");
 
-botonOnOff.addEventListener("click", () =>{
+botonOnOff.addEventListener("click", () => {
 
   document.body.classList.toggle('oscuro')
-botonOnOff.classList.toggle('activo')
+  botonOnOff.classList.toggle('activo')
 
 
 })

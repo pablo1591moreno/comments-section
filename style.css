@@ -1,107 +1,105 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap");
-:root {
-  --azul: #4949cf;
-  --rojo: #ce3e3e; 
-  --blanco: #000000; /*negro*/
-  --grisClaro: #363636; /* negroClaro */
-  --negroClaro: #b9b9b9; /* blancoClaro */
-  --negro: #ffffff; /*blanco*/
-}
 
-/* :root {
-    --azul: #4949cf;
-    --rojo: #ce3e3e; 
+
+:root {
+    --azul: hsl(240, 20%, 54%);
+    --rojo: hsl(0, 60%, 53%);
     --blanco: hsl(0, 0%, 100%);
-    --grisClaro: hsl(0, 0%, 81%);
+    --grisClaro: hsl(225, 7%, 89%);
     --negroClaro: hsl(0, 0%, 12%);
     --negro: hsl(0, 0%, 0%);
-  } */
+    --amarillo: hsl(81, 70%, 56%);
+}
 
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Rubik", sans-serif;     
-  font-size: 16px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+        
 }
 
-p{
-    line-height: 1.5;
-}
-
-body{
+body {
     height: 100%;
     width: 100%;
     padding-top: 3rem;
-    background-color: var(--negroClaro);
+    background-color: var(--grisClaro);
+    transition: .5s ease all;
 }
 
-a{
+a {
     cursor: pointer;
     text-decoration: none;
     font-weight: 500;
 }
 
-.onOff{
+
+.seccionBoton {
+    display: flex;
+    justify-content: end;
+    margin: 20px 0;
+}
+
+.onOff {
     margin: 0 50px;
-    display: flex;    
-    background-color: #000000;  
+    display: flex;
+    background-color: var(--negro);
     border-radius: 1000px;
     border: none;
     position: relative;
-    outline: none;        
+    outline: none;
 }
 
 
-.onOff::after{
+.onOff::after {
     content: "";
     display: block;
-    width: 40px;
-    height: 40px;
-    position:absolute;
-    background-color: white;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background-color: var(--blanco);
     top: 0;
     left: 0;
     right: unset;
     border-radius: 100px;
-    transition: .3s ease all;
     box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.13);
 }
 
-.onOff.activo{
-    background-color: hsl(81, 95%, 59%);  
-}
+.onOff.activo {
+    background-color: var(--amarillo);
+    }
 
-.onOff.activo::after{
+.onOff.activo::after {
     left: unset;
     right: 0;
 }
 
-.onOff span{
-width: 40px;
-height: 40px;
-line-height: 40px;
-display: block;
-color: #ffffff;
+.onOff span {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    color: #ffffff;
 }
 
-button{
+button {
     cursor: pointer;
 }
 
-.botonEnviar{
-    color: var(--negro);    
-    background-color: var(--azul);    
+.botonEnviar {
+    color: var(--blanco);
+    background-color: var(--azul);
     border: none;
     padding: .75rem 1.5rem;
     border-radius: 4px;
 }
 
 
-.contenedor{
-    border-radius: 8px;
+.contenedor {
+    border-radius: 12px;
     padding: 1.5rem;
-    background-color: var(--negro);
+    background-color: var(--blanco);
+    box-shadow: 2px 13px 19px -3px rgba(0,0,0,0.33);
 }
 
 .paqueteDeComentarios {
@@ -109,16 +107,16 @@ button{
     flex-direction: column;
 }
 
-.seccionComentarios{
+.seccionComentarios {
     max-width: 75ch;
     margin: auto;
     margin-top: 1rem;
 }
 
-.comentario{
+.comentario {
     margin-bottom: 1rem;
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
         "score user controls"
         "score comentario comentario"
         "score comentario comentario"
@@ -126,39 +124,38 @@ button{
     grid-template-columns: auto 1fr auto;
     gap: 1.5rem;
     row-gap: 1rem;
-    color: var(--blanco);
 }
 
-.like{
-    color: var(--negro);
+.like {
     font-weight: 500;
     grid-area: score;
     display: flex;
     align-items: center;
     flex-direction: column;
     padding: .75rem;
-    padding-top: .5rem;
+    padding-top: .7rem;
     width: 1rem;
-    box-sizing:initial;
-    background-color: var(--azul);
+    box-sizing: initial;
     border-radius: 8px;
     align-self: flex-start;
+    margin: auto;
+    color: var(--blanco);
+    background-color: var(--azul);
 }
 
-.controlLike{
+.controlLike {
     width: 100%;
     cursor: pointer;
     object-fit: scale-down;
 }
 
-.c-text{
+.c-text {
     grid-area: comentario;
     width: 100%;
     word-wrap: break-word
-    
 }
 
-.usuario{
+.usuario {
     width: 100%;
     grid-area: user;
     display: flex;
@@ -166,99 +163,101 @@ button{
     align-items: center;
 }
 
-.nombreUsuario{
-    -color: var(--azul);
-    font-weight: 700;
+p.nombreUsuario {
+    color: var(--azul);
+    font-weight: bolder;
     margin-right: 15px;
 }
 
-.imagenUsuario{
+.imagenUsuario {
     height: 2rem;
     width: 2rem;
     margin-right: 15px;
 }
 
-.c-controls{
+.c-controls {
     display: flex;
     gap: 1rem;
-    color: var(--azul);
     grid-area: controls;
     align-self: center;
     justify-self: flex-end;
 }
 
-.c-controls a{
+.c-controls a {
     align-items: center;
 }
 
-.editar , .responder{
+.editar,
+.responder {
     color: var(--azul);
 }
 
-.editar{
+.editar {
     display: none;
 }
 
 
-.eliminar{
+.eliminar {
     color: var(--rojo);
     display: none;
     margin-right: 20px;
 }
 
-.control-icon{
+.control-icon {
     margin-right: .5rem;
 }
 
 
-.replies{
+.replies {
     display: flex;
     margin-left: 2.5rem;
     padding-left: 2.4rem;
-    
+
 }
 
-.responder-to{
+.responder-to {
     color: var(--azul);
     font-weight: 500;
 }
 
-.inputContesta{
+.inputContesta {
     display: grid;
     margin-bottom: 1rem;
     grid-template-areas: "avatar input button";
     grid-template-columns: min-content auto min-content;
     justify-items: center;
-    gap: 1rem;
-    min-height: 9rem;
+    gap: 1rem;    
 }
 
-.inputContesta img{
+.inputContesta img {
     grid-area: avatar;
     height: 2.5rem;
     width: 2.5rem;
 }
 
-.inputContesta button{
+.inputContesta button {
     grid-area: button;
     align-self: flex-start;
 }
 
-.inputContesta textarea{
-    grid-area: input;
-    padding: 1rem;
+.inputContesta textarea {
     width: 100%;
-    border: 1px solid var(--blanco);
-    border-radius: 4px;
+    height: 80%;
+    grid-area: input;
+    padding: .5rem;
+    border: none;
+    border-radius: 10px;    
     resize: none;
+    background-color: var(--grisClaro);
 }
 
 
-.this-user .responder{
+.this-user .responder {
     display: none;
 }
 
-.this-user .editar , .this-user .eliminar{
+.this-user .editar,
+.this-user .eliminar {
     display: flex;
 }
 
@@ -269,25 +268,26 @@ button{
         line-height: 0;
     }
 
-    .seccionComentarios{
-    width: 95%;
+    .seccionComentarios {
+        width: 95%;
     }
 
-    .contenedor{
+    .contenedor {
         padding: 1rem;
-        
+
     }
-    .replies{
+
+    .replies {
         padding-left: 1rem;
         margin-left: .5rem;
     }
 
-    .responder{
+    .responder {
         font-size: .9rem;
     }
 
-    .comentario{
-        grid-template-areas: 
+    .comentario {
+        grid-template-areas:
             "user user user"
             "comentario comentario comentario"
             "score ... controls"
@@ -295,66 +295,61 @@ button{
         gap: 1rem;
     }
 
-    .like{
+    .like {
         flex-direction: row;
         width: 2.4rem;
-        padding: .5rem;        
+        padding: .5rem;
         gap: .5rem;
     }
 
-    .controlLike{
-       width: 18px;
-       
+    .controlLike {
+        width: 18px;
+
     }
 
-    .inputContesta{
-        grid-template-areas: 
+    .inputContesta {
+        grid-template-areas:
             "input input input"
             "avatar ... button"
         ;
         grid-template-rows: auto min-content;
         align-items: center;
-        gap: 1rem;                
+        gap: 1rem;
     }
 
-    /* .replies{        
-        align-items: flex-end;        
-    } */
-
-
-    .inputContesta img{
+    .inputContesta img {
         height: 2rem;
         width: 2rem;
     }
-    .inputContesta textarea{
+
+    .inputContesta textarea {
         height: 6rem;
         padding: .5rem;
         align-self: stretch;
     }
 
-    .c-body{
+    .c-body {
         font-size: .9rem;
     }
 
-    .imagenUsuario{
+    .imagenUsuario {
         margin-right: 0;
     }
 
-    .botonEnviar{
+    .botonEnviar {
         padding: .5rem 1rem;
         font-size: .9rem;
     }
-    
-    .inputContesta textarea{
+
+    .inputContesta textarea {
         height: 4.5rem;
     }
-    
+
 }
 
-/*------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------  MODAL */
 
-
-.paqueteModal{
+.paqueteModal {
     position: fixed;
     top: 0;
     left: 0;
@@ -366,28 +361,28 @@ button{
     background-color: rgba(231, 218, 218, 0.466);
 }
 
-.modal{
+.modal {
     padding: 1.5rem;
     max-width: 32ch;
     display: grid;
     gap: 1rem;
-    grid-template-areas: 
-    "heading heading"
-    "body body"
-    "no yes";
+    grid-template-areas:
+        "heading heading"
+        "body body"
+        "no yes";
 }
 
-.invisible{
+.invisible {
     display: none;
 }
 
-.modal h3{
+.modal h3 {
     grid-area: heading;
     color: var(--blanco);
     font-size: 25px;
 }
 
-.modal button{
+.modal button {
     color: var(--negro);
     padding: .75rem;
     border-radius: 8px;
@@ -395,19 +390,43 @@ button{
     font-weight: 500;
 }
 
-.modal p{
+.modal p {
     grid-area: body;
     color: var(--blanco);
     line-height: 1.5;
 }
 
-.modal .si{
+.modal .si {
     grid-area: yes;
     background-color: var(--rojo);
 }
 
-.modal .no{
+.modal .no {
     background-color: var(--azul);
     grid-area: no;
 }
 
+
+/*-----------------------------------------------------------------------------  MODO OSCURO */
+body.oscuro main div.seccionComentarios div.contenedor {
+    background-color: var(--negro);
+    box-shadow: 2px 13px 19px -3px rgba(0, 0, 0, 0.33);
+}
+
+body.oscuro main div.seccionComentarios div.paqueteDeComentarios div.contenedor {
+    background-color: var(--negro);
+    
+}
+
+body.oscuro main div.seccionComentarios div.paqueteDeComentarios div.paqueteComentario div.comentario {
+    color: var(--blanco);    
+}
+
+body.oscuro {
+    background-color: var(--negroClaro);
+    
+}
+
+body.oscuro main div.seccionComentarios div.paqueteDeComentarios div.paqueteComentario div.replies div.contenedor .cmnt-input {
+    background-color: var(--blanco);
+}
