@@ -1,5 +1,3 @@
-
-
 :root {
     --azul: hsl(240, 20%, 54%);
     --rojo: hsl(0, 60%, 53%);
@@ -10,25 +8,41 @@
     --amarillo: hsl(81, 70%, 56%);
 }
 
-/*-----------------------------GENERAL  */
+/*-------------------------------------------------------------------------------------------- DESKTOP */
 * {
     padding: 0;
-    margin: 0;        
+    margin: 0;
     font-family: 'Poppins', sans-serif;
 }
 
-body {        
+body {
     background-color: var(--grisClaro);
     transition: .5s ease all;
 }
 
 a {
-    cursor: pointer;    
+    cursor: pointer;
     font-weight: 600;
 }
 
-button, .controlLike{
+button,
+i {
     cursor: pointer;
+}
+
+/*------------------SECCION COMENTARIOS - CONTENEDOR  */
+.seccionComentarios {
+    max-width: 40rem;
+    margin: auto;
+}
+
+.contenedor {
+    align-items: center;
+    border-radius: 12px;
+    padding: .8rem;
+    background-color: var(--blanco);
+    box-shadow: 2px 13px 19px -3px rgba(0, 0, 0, 0.33);
+    transition: .5s ease all;
 }
 
 /*-----------------------------BOTON MODO NOCTURNO  */
@@ -51,8 +65,8 @@ button, .controlLike{
 .onOff::after {
     content: "";
     display: block;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     position: absolute;
     background-color: var(--blanco);
     top: 0;
@@ -64,7 +78,7 @@ button, .controlLike{
 
 .onOff.activo {
     background-color: var(--amarillo);
-    }
+}
 
 .onOff.activo::after {
     left: unset;
@@ -72,37 +86,14 @@ button, .controlLike{
 }
 
 .onOff span {
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
     display: block;
     color: #ffffff;
 }
 
-/*-----------------------------BOTON ENVIAR  */
-.botonEnviar {
-    color: var(--blanco);
-    background-color: var(--azul);
-    border: none;
-    padding: .75rem 1.5rem;
-    margin-right: .5rem;
-    border-radius: 10px;        
-}
-
-.contenedor {
-    align-items: center;
-    border-radius: 12px;
-    padding: .8rem;
-    background-color: var(--blanco);
-    box-shadow: 2px 13px 19px -3px rgba(0,0,0,0.33);
-    transition: .5s ease all;
-}
-
-.seccionComentarios {
-    max-width: 40rem;
-    margin: auto;    
-}
-
+/*------------------------------------ COMENTARIOS  */
 .comentario {
     margin-bottom: 1rem;
     display: grid;
@@ -114,51 +105,28 @@ button, .controlLike{
     row-gap: .5rem;
 }
 
+/*--------------------------------------BOTON LIKE  */
 .like {
     grid-area: score;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: .75rem;    
+    padding: .75rem;
     width: 1rem;
     box-sizing: initial;
-    border-radius: 10px;        
-    color: var(--blanco);        
+    border-radius: 10px;
+    color: var(--blanco);
     font-weight: 600;
     background-color: var(--azul);
+    gap: .3rem;
 }
 
-.controlLike {
-    width: 100%;    
-}
 
-.c-text {    
-    grid-area: comentario;
-    width: 100%;
-    word-wrap: break-word
-}
-
-.usuario {
-    grid-area: user;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    font-weight: 600;
-}
-
-p.nombreUsuario {    
-    color: var(--azul);
-}
-
-.imagenUsuario {
-    height: 2rem;
-    width: 2rem;    
-}
-
+/*---------------------- RESPONDER ELIMINAR EDITAR  */
 .c-controls {
-    grid-area: controls;    
-    display: flex;    
+    grid-area: controls;
+    display: flex;
 }
 
 .c-controls a {
@@ -190,32 +158,6 @@ p.nombreUsuario {
     padding-left: 5rem;
 }
 
-
-.inputContesta {
-    display: grid;
-    margin-bottom: 1rem;    
-    grid-template-columns: min-content auto min-content;
-    gap: 1rem;    
-}
-
-.inputContesta img {    
-    height: 2.5rem;
-    width: 2.5rem;
-}
-
-.inputContesta textarea {
-    width: 98%;
-    height: 45%;    
-    padding: .5rem;
-    border: none;
-    border-radius: 10px;    
-    resize: none;
-    background-color: var(--grisClaro);    
-    overflow: hidden;
-    transition: .5s ease all;
-}
-
-
 .this-user .responder {
     display: none;
 }
@@ -225,19 +167,81 @@ p.nombreUsuario {
     display: flex;
 }
 
+/*--------------------------------------- USUARIO  */
+.usuario {
+    grid-area: user;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-weight: 600;
+}
 
-/*------------------------------------------------------------------------ Phone */
+p.nombreUsuario {
+    color: var(--azul);
+}
+
+.imagenUsuario {
+    height: 2rem;
+    width: 2rem;
+}
+
+/*-------------------------------------------TEXTO  */
+.c-text {
+    grid-area: comentario;
+    width: 100%;
+    word-wrap: break-word
+}
+
+/*-----------------------------INPUT PARA COMENTAR  */
+.inputContesta img {
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.inputContesta {
+    display: grid;
+    margin-bottom: 1rem;
+    grid-template-columns: min-content auto min-content;
+    gap: 1rem;
+}
+
+.inputContesta textarea {
+    width: 98%;
+    height: 45%;
+    padding: .5rem;
+    border: none;
+    border-radius: 10px;
+    resize: none;
+    background-color: var(--grisClaro);
+    overflow: hidden;
+    transition: .5s ease all;
+}
+
+/*------------------------------------BOTON ENVIAR  */
+.botonEnviar {
+    color: var(--blanco);
+    background-color: var(--azul);
+    border: none;
+    padding: .75rem 1.5rem;
+    margin-right: .5rem;
+    border-radius: 10px;
+}
+
+
+
+/*-------------------------------------------------------------------------------------------- PHONE */
 @media screen and (max-width:640px) {
 
+    /*-----------------------------SECCION COMENTARIOS - CONTENEDOR  */
     .seccionComentarios {
         width: 95%;
     }
 
-    .replies {
-        padding-left: 1rem;
-        margin-left: .5rem;
+    .contenedor {
+        padding: .5rem;
     }
 
+    /*--------------------------------- COMENTARIOS  */
     .comentario {
         grid-template-areas:
             "user user user"
@@ -247,14 +251,7 @@ p.nombreUsuario {
         gap: 0rem;
     }
 
-    .c-text{
-        margin: .5rem 0;
-    }
-
-    .contenedor{
-padding: .5rem;
-    }
-
+    /*----------------------------------BOTON LIKE  */
     .like {
         flex-direction: row;
         width: 2.4rem;
@@ -262,18 +259,31 @@ padding: .5rem;
         gap: .5rem;
     }
 
-    .controlLike {
-        width: 16px;
+    /*------------------ RESPONDER ELIMINAR EDITAR  */
+    .replies {
+        padding-left: 1rem;
+        margin-left: .5rem;
     }
 
-    .inputContesta {     
-        align-items: center;
-        gap: .5rem;
+    /*------------------------------------ USUARIO  */
+    .imagenUsuario {
+        margin-right: 0;
     }
 
+    /*---------------------------------------TEXTO  */
+    .c-text {
+        margin: .5rem 0;
+    }
+
+    /*-------------------------INPUT PARA COMENTAR  */
     .inputContesta img {
         height: 2rem;
         width: 2rem;
+    }
+
+    .inputContesta {
+        align-items: center;
+        gap: .5rem;
     }
 
     .inputContesta textarea {
@@ -282,23 +292,20 @@ padding: .5rem;
         align-self: stretch;
     }
 
+    .inputContesta textarea {
+        height: 1.3rem;
+        width: 94%;
+    }
+
     .c-body {
         font-weight: 400;
     }
 
-    .imagenUsuario {
-        margin-right: 0;
-    }
-
+/*------------------------------------BOTON ENVIAR  */
     .botonEnviar {
         padding: .5rem 1rem;
         font-weight: 600;
         margin-right: 0px;
-    }
-
-    .inputContesta textarea {
-        height: 1.3rem;
-        width: 94%;
     }
 
 }
@@ -333,7 +340,7 @@ padding: .5rem;
 
 .modal h3 {
     grid-area: heading;
-    color: var(--negro); 
+    color: var(--negro);
 }
 
 .modal button {
@@ -369,32 +376,32 @@ body.oscuro main div.seccionComentarios div.contenedor {
 
 body.oscuro main div.seccionComentarios div.paqueteDeComentarios div.contenedor {
     background-color: var(--negro);
-    
+
 }
 
 body.oscuro main div.seccionComentarios div.paqueteDeComentarios div.paqueteComentario div.comentario {
-    color: var(--blanco);    
+    color: var(--blanco);
 }
 
 body.oscuro {
     background-color: var(--negroClaro);
-    
+
 }
 
 body.oscuro main div.seccionComentarios div.paqueteDeComentarios div.paqueteComentario div.replies div.contenedor .cmnt-input {
     background-color: var(--blanco);
 }
 
-body.oscuro main div.paqueteModal div.contenedor{
+body.oscuro main div.paqueteModal div.contenedor {
     background-color: var(--negro);
 }
 
 
 /*-----------------------------------------------------------------------------  MODAL(OSCURO) */
-body.oscuro main div.paqueteModal div.contenedor h3{
+body.oscuro main div.paqueteModal div.contenedor h3 {
     color: var(--blanco);
 }
 
-body.oscuro main div.paqueteModal div.contenedor p{
+body.oscuro main div.paqueteModal div.contenedor p {
     color: var(--blanco);
 }

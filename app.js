@@ -1,10 +1,10 @@
 const data = {
   currentUser: {
     imagen: {
-      png: "./images/avatars/image-juliusomo.png",
-      webp: "./images/avatars/image-juliusomo.webp",
+      png: "./images/avatars/image-julio.png",
+      webp: "./images/avatars/image-julio.webp",
     },
-    username: "Pablo",
+    username: "julio",
   },
   comments: [
     {
@@ -16,8 +16,8 @@ const data = {
       score: 0,
       user: {
         imagen: {
-          png: "./images/avatars/image-amyrobson.png",
-          webp: "./images/avatars/image-amyrobson.webp",
+          png: "./images/avatars/image-Josefina.png",
+          webp: "./images/avatars/image-Josefina.webp",
         },
         username: "Josefina",
       },
@@ -32,8 +32,8 @@ const data = {
       score: 0,
       user: {
         imagen: {
-          png: "./images/avatars/image-maxblagun.png",
-          webp: "./images/avatars/image-maxblagun.webp",
+          png: "./images/avatars/image-luis.png",
+          webp: "./images/avatars/image-luis.webp",
         },
         username: "Luis",
       },
@@ -139,7 +139,7 @@ const creaComentarioEnNodo = (comentarioObject) => {
     creandoComentarioEnNodo.querySelector(".responder-to").textContent =
       "@" + comentarioObject.replyingTo;
 
-  creandoComentarioEnNodo.querySelector(".plusLike").addEventListener("click", () => {
+  creandoComentarioEnNodo.querySelector(".fa-heart").addEventListener("click", () => {
     comentarioObject.score++;
     comentariosDeInicio();
   });

@@ -8,7 +8,9 @@
   <script src="https://kit.fontawesome.com/2449c46202.js" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <title>Interactive comments section</title>
 </head>
@@ -18,7 +20,7 @@
 
   <template class="inputContesta-template">
     <div class="inputContesta contenedor">
-      <img src="images/avatars/image-juliusomo.webp" class="imagenUsuario">
+      <img src="images/avatars/image-julio.webp" class="imagenUsuario">
       <textarea class="cmnt-input"></textarea>
       <button class="botonEnviar">Enviar</button>
     </div>
@@ -30,13 +32,12 @@
       <div class="comentario contenedor">
         <div class="like">
           <p class="numeroLikes"></p>
-          <img src="/images/icons8-heart-90.png" alt="plus" class="controlLike plusLike">
-
+          <i class="fa-solid fa-heart" alt="plus"></i>
         </div>
         <div class="c-controls">
-          <a class="eliminar"><img src="images/icon-delete.svg" alt="" class="control-icon">Delete</a>
-          <a class="editar"><img src="images/icon-edit.svg" alt="" class="control-icon">Edit</a>
-          <a class="responder"><img src="images/icon-reply.svg" alt="" class="control-icon">responder</a>
+          <a class="eliminar"><i class="fa-solid fa-trash-can control-icon"></i>Delete</a>
+          <a class="editar"><i class="fa-solid fa-pen control-icon"></i>Edit</a>
+          <a class="responder"><i class="fa-solid fa-reply control-icon"></i>responder</a>
         </div>
         <div class="usuario">
           <img src="" class="imagenUsuario">
@@ -72,12 +73,12 @@
 
       <!--comment wrapper-->
       <div class="inputContesta contenedor">
-        <img src="images/avatars/image-juliusomo.webp" alt="" class="imagenUsuario">
+        <img src="images/avatars/image-julio.webp" alt="" class="imagenUsuario">
         <textarea class="cmnt-input"></textarea>
         <button class="botonEnviar">Enviar</button>
       </div>
-    
-      <!--responder input-->    
+
+      <!--responder input-->
     </div>
 
     <!--Modal-->
