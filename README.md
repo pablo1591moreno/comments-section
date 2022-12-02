@@ -1,6 +1,6 @@
 # Comments-section
 
-Seccion de comentarios para cualquier tipo de pagina
+Seccion de comentarios para cualquier con modo nocturno
 
 ## Recursos utilizados
 
