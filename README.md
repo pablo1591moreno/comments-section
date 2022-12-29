@@ -1,6 +1,8 @@
 # Comments-section
 
-Seccion de comentarios para cualquier con modo nocturno
+Sistema de comentarios que permite a los usuarios publicar, responder, eliminar y dar like a comentarios, tiene una opción de modo nocturno y es responsive, lo que significa que se verá bien en diferentes dispositivos (Desktop - Tablet - Phone)
+
+
 
 ## Recursos utilizados
 
